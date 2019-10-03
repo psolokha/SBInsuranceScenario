@@ -1,9 +1,7 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 class Utils extends ChromeDriver{
@@ -32,8 +30,7 @@ class Utils extends ChromeDriver{
     }
 
     void waitElement(String xpath) {
-        Wait<WebDriver> wait = new WebDriverWait(instance,10, 1000);
-        wait.until(ExpectedConditions.elementToBeClickable(getElement(xpath)));
+        new WebDriverWait(instance,10, 1000).until(ExpectedConditions.elementToBeClickable(getElement(xpath)));
     }
 
     String getOtherWindow() {

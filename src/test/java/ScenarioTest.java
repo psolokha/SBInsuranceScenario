@@ -21,14 +21,14 @@ public class ScenarioTest {
         Assert.assertTrue(driver.getElement("//title[contains(text(), 'Страхование путешественников')]").isEnabled());
         driver.clickElement("//a/img[contains(@src, 'zashita-traveler')]");
         driver.switchTo().window(driver.getOtherWindow());
+
         try {
             driver.waitElement("//span[text()='Выбор полиса']");
         } catch (Exception ex) {
             System.out.println(driver.getTitle());
             return;
         }
-        //new WebDriverWait(driver, 10, 1000).until(ExpectedConditions.elementToBeClickable(driver.getElement("//div[@class='b-form-prog-block ng-scope'][1]")));
-        //((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.getElement("//div[@class='b-form-prog-block ng-scope'][1]"));
+
         driver.clickElement("//div[@class='b-form-prog-block ng-scope'][1]");
         driver.clickElement("//span[text()='Оформить']");
         driver.fillInput("//input[@name='insured0_birthDate']", "11112011\t");
@@ -37,17 +37,15 @@ public class ScenarioTest {
         driver.fillInput("//input[@name='surname']", "Иванов");
         driver.fillInput("//input[@name='name']", "Иван");
         driver.fillInput("//input[@name='middlename']", "Иваныч");
-        //driver.clickElement("//input[@name='birthDate']");
         driver.fillInput("//input[@name='birthDate']", "11111991\t");
-        //driver.clickElement("//input[@name='name']");
-        //driver.clickElement("//input[@name='middlename']");
         driver.clickElement("//span[contains(@ng-class, 'GENDER == 1')]");
         driver.fillInput("//input[@name='passport_series']", "1111");
         driver.fillInput("//input[@name='passport_number']", "111111");
         driver.fillInput("//input[@name='issueDate']", "1112011\t");
         driver.fillInput("//textarea", "111111");
         Assert.assertFalse(driver.findElement(By.xpath("//*[contains(@class, 'text-field-error')]")).isDisplayed());
-        //driver.clickElement("//a[contains(text(), 'Продолжить')]");
+        driver.clickElement("//span[contains(text(), 'Продолжить')]");
+        Assert.assertTrue(driver.getElement("//div[text()='Заполнены не все обязательные поля']").isDisplayed());
 
     }
 
