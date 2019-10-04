@@ -9,7 +9,7 @@ public class ScenarioTest {
 
     @BeforeClass
     public static void scenarioConfigurator() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
     }
 
 
