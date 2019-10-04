@@ -34,11 +34,7 @@ class Utils extends ChromeDriver{
     }
 
     String getOtherWindow() {
-        String handle = "";
-        for (String str: instance.getWindowHandles()) {
-            if (!str.equals(instance.getWindowHandle())) handle = str;
-        }
-        return handle;
+        return (String)instance.getWindowHandles().stream().filter(str -> !str.equals(instance.getWindowHandle())).toArray()[0];
     }
 
 }
